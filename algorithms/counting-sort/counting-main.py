@@ -6,4 +6,7 @@ print(f"Elements in exam {elements}")
 
 result:list[int] = CountingSort.countingSort(elements, 8)
 
-print(f"Elements sorted: {result}")
+print(f"Elements sorted with simple method: {result}")
+
+complexResult:list[int] = CountingSort.preciseCountingSort(elements, 8)
+print(f"Elements sorted with complex method: {complexResult}")
