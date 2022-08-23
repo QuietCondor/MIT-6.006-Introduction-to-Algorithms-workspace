@@ -2,13 +2,21 @@ from countingSort.countingSort import CountingSort, countingSort
 
 class RadixSort(object):
 
-    def __getRow(matrix:list[list[int]], heightIndex:int)->list[int]:
+    def getRow(matrix:list[list[int]], heightIndex:int)->list[int]:
         result: list[int] = []
 
         for i in range(0, len(matrix)):
             result.append(matrix[i][heightIndex])
 
         return result
+
+    def __swapRows(matrix:list[list[int]], indexFrom:int, indexTo:int)->None:
+        for i in range(0, len(matrix)):
+            tmp:int = matrix[i][indexFrom]
+            matrix[i][indexFrom] = matrix[i][indexTo]
+            matrix[i][indexTo] = tmp
+
+        pass
 
     def radixSort(matrix:list[list[int]], max:int)->None:
         """
@@ -19,11 +27,17 @@ class RadixSort(object):
             return matrix
 
         # Sort the matrix using radix sort algorithm
-        for i in reversed(matrix):
+        i:int = len(matrix)
+        while i>0:
             sortedColumn:list[int] = CountingSort.preciseCountingSort(matrix[i], max)
             
             for cellIndex in range(0, len(sortedColumn)):
-                currRow:list[int] = RadixSort.__getRow(matrix, cellIndex)
+                if matrix[i][cellIndex] != sortedColumn[cellIndex]:
+                    RadixSort.__swapRows(matrix,matrix.index(matrix[i][cellIndex], cellIndex))
+                     
+
+            i-=1
+                
 
 
         pass
