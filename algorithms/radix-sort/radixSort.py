@@ -1,4 +1,4 @@
-from countingSort.countingSort import CountingSort, countingSort
+from countingSort.countingSort import CountingSort
 
 class RadixSort(object):
 
@@ -27,13 +27,13 @@ class RadixSort(object):
             return matrix
 
         # Sort the matrix using radix sort algorithm
-        i:int = len(matrix)
-        while i>0:
+        i:int = len(matrix)-1
+        while i>=0:
             sortedColumn:list[int] = CountingSort.preciseCountingSort(matrix[i], max)
             
             for cellIndex in range(0, len(sortedColumn)):
                 if matrix[i][cellIndex] != sortedColumn[cellIndex]:
-                    RadixSort.__swapRows(matrix,matrix.index(matrix[i][cellIndex], cellIndex))
+                    RadixSort.__swapRows(matrix,matrix[i].index(matrix[i][cellIndex]), matrix[i].index(sortedColumn[cellIndex]))
                      
 
             i-=1

@@ -8,5 +8,12 @@ matrix:list[list[int]]=[
 
 print("Matrice selezionata")
 
-for i in range(0, len(matrix)):
-    print(f"Actual Matrix: {RadixSort.getRow(matrix, i)}");
+for i in range(0, len(matrix[0])):
+    print(f"Row {i+1}: {RadixSort.getRow(matrix, i)}");
+    
+RadixSort.radixSort(matrix, 9)
+
+print("Matrice sorted")
+
+for i in range(0, len(matrix[0])):
+    print(f"Row {i+1}: {RadixSort.getRow(matrix, i)}");
